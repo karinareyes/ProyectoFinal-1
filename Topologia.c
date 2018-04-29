@@ -89,7 +89,7 @@ void topologia()
      for (a=0; a<max; a++)
 {
    arregloCadena[a]="\0";
-   printf("%s\n",arregloCadena[a]);
+   //printf("%s\n",arregloCadena[a]);
 }
     }
   getchar();
