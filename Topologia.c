@@ -5,7 +5,7 @@ void topologia()
 {
 
   FILE *topologia;
-  int valida=0, c, i;
+  int valida=0, c, i,a;
   char renglon[200];
   char or[255];
   char de[255];
@@ -13,7 +13,8 @@ void topologia()
   DATOS *inicio, *auxiliar, *nodo;
   char separador[]=":";
   char *cadena;
-  char str[60];
+  const char *arregloCadena[max];
+
 
   system("clear");
   printf("\t\t\tRealizado por: Diana Laura Aviles Elizalde\n\n");
@@ -34,12 +35,13 @@ void topologia()
       while (fgets(renglon,maxNumCaracToRead,topologia)!=NULL)
 	{
 	  cadena= strtok(renglon,separador);
-	  while (cadena != NULL){
-	    printf("%s ",cadena);
-	    cadena = strtok(NULL,separador);
-	  }
+	  while (cadena != NULL)
+	    {
+	      printf("%s ",cadena);
+	      cadena = strtok(NULL,separador);
+	    }
 	  //Guardar datos del renglo origen:Destino:Costo
-	  if(scanf(cadena,"%s%*c%s%*c%d",or,de,&costo)==3) //valida que ten
+	  if(scanf(cadena,"%s%*c%s%*c%d",or,de,&costo)==3) //valida que tenga 3 valores
 	    {
 	      nodo=malloc(sizeof(DATOS));
 	      if(nodo==NULL)
@@ -82,7 +84,14 @@ void topologia()
 	    }
 	}
       fclose(topologia);
-  }
+     //apartir de aqui , comparamos los cadenas para determinar cuantos nodos son
+     //inicializamos el arreglo de cadenas.
+     for (a=0; a<max; a++)
+{
+   arregloCadena[a]="\0";
+   printf("%s\n",arregloCadena[a]);
+}
+    }
   getchar();
   getchar();
 }

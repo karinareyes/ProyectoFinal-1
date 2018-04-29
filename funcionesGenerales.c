@@ -27,6 +27,7 @@ int validationError(int valida)
     case 1:
       system("clear"); //validacion de argumentos
       printf("\n\n\tIngreso mal su opcion,intentelo de nuevo\n");
+      printf("\t\t\t\t\t\tPresiona Enter para continuar [  ]\n");
     break;
 
     case 2:
