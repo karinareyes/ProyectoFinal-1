@@ -100,7 +100,7 @@ void topologia()
           {
               if(strstr(arregloCadena[a],"0")!=NULL)
               {
-                if (arregloCadena[a] == auxiliar->origen)
+                if (strcasecmp(arregloCadena[a],auxiliar->origen)==0)
                   {
                     contador = 1;
                   }
@@ -116,7 +116,7 @@ void topologia()
           {
               if(strstr(arregloCadena[a],"0")!=NULL)
               {
-                if (arregloCadena[a] == auxiliar->destino)
+                if (strcasecmp(arregloCadena[a],auxiliar->origen)==0)
                   {
                     contador = 1;
                   }
