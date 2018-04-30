@@ -95,36 +95,43 @@ void topologia()
       auxiliar = inicio;
       while (auxiliar != NULL)
         {
-	  for (a=0; a<max; a++)
-	    {
-	      if(strstr(arregloCadena[a],"0")==NULL)
-		{
-		  if (arregloCadena[a] == auxiliar->origen)
-		    {
-		      contador = 1;
-		    }
-		}
+          contador=0;
+          for (a=0; a<max; a++)
+          {
+              if(strstr(arregloCadena[a],"0")!=NULL)
+              {
+                if (arregloCadena[a] == auxiliar->origen)
+                  {
+                    contador = 1;
+                  }
+              }
+          }
+          if(contador==0)
+          {
+            arregloCadena[a]=auxiliar->origen;
+          }
 
-	  if (contador == 0) {
-	    arregloCadena[a] = auxiliar->origen;
-	  }
+          contador=0;
+          for (a=0; a<max; a++)
+          {
+              if(strstr(arregloCadena[a],"0")!=NULL)
+              {
+                if (arregloCadena[a] == auxiliar->destino)
+                  {
+                    contador = 1;
+                  }
+              }
+          }
+          if(contador==0)
+          {
+            arregloCadena[a]=auxiliar->destino;
+          }
+           auxiliar = auxiliar->siguiente;
+	      }
+  for(a=0;a<max;a++)
+  {
+    printf("%s",arregloCadena[a]);
   }
-	  contador = 0;
-	  for (a=0; a<max; a++)
-	    {
-	      if(strstr(arregloCadena[a],"0")==NULL)
-		{
-		  if (arregloCadena[a] == auxiliar->destino)
-		    {
-		      contador = 1;
-		    }
-		}
-	    }
-	  if (contador== 0) {
-	    arregloCadena[a] = auxiliar->destino;
-	  }
-	  auxiliar = auxiliar->siguiente;
-	}
       getchar();
       getchar();
     }
