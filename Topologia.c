@@ -14,7 +14,7 @@ void topologia()
   char separador[]=":";
   char *cadena;
   const char *arregloCadena[max];
-
+  int contador=0;
 
   system("clear");
   printf("\t\t\tRealizado por: Diana Laura Aviles Elizalde\n\n");
@@ -84,14 +84,48 @@ void topologia()
 	    }
 	}
       fclose(topologia);
-     //apartir de aqui , comparamos los cadenas para determinar cuantos nodos son
-     //inicializamos el arreglo de cadenas.
-     for (a=0; a<max; a++)
-{
-   arregloCadena[a]="\0";
-   //printf("%s\n",arregloCadena[a]);
-}
+      //apartir de aqui , comparamos los cadenas para determinar cuantos nodos son
+      //inicializamos el arreglo de cadenas.
+      for (a=0; a<max; a++)
+	{
+	  arregloCadena[a]="0";
+	  printf("%s\n",arregloCadena[a]);
+	}
+
+      auxiliar = inicio;
+      while (auxiliar != NULL)
+        {
+	  for (a=0; a<max; a++)
+	    {
+	      if(strstr(arregloCadena[a],"0")==NULL)
+		{
+		  if (arregloCadena[a] == auxiliar->origen)
+		    {
+		      contador = 1;
+		    }
+		}
+
+	  if (contador == 0) {
+	    arregloCadena[a] = auxiliar->origen;
+	  }
+  }
+	  contador = 0;
+	  for (a=0; a<max; a++)
+	    {
+	      if(strstr(arregloCadena[a],"0")==NULL)
+		{
+		  if (arregloCadena[a] == auxiliar->destino)
+		    {
+		      contador = 1;
+		    }
+		}
+	    }
+	  if (contador== 0) {
+	    arregloCadena[a] = auxiliar->destino;
+	  }
+	  auxiliar = auxiliar->siguiente;
+	}
+      getchar();
+      getchar();
     }
-  getchar();
-  getchar();
 }

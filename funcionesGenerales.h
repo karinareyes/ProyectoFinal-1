@@ -3,7 +3,7 @@
 #include<string.h>
 
 #define  maxNumCaracToRead 200
-#define max 100 //nodos diferenetes max que puede llegar a leer
+#define max 10 //nodos diferenetes max que puede llegar a leer
 
 /*Estructura para leer el archivo de topologia.txt*/
 typedef struct topologiatxt{
