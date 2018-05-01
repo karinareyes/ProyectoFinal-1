@@ -1,3 +1,4 @@
+//REferencias Manuel perez, Isuky
 #include "funcionesGenerales.h"
 
 
@@ -8,13 +9,16 @@ void topologia()
   int valida=0, c, i,a;
   char renglon[200];
   char or[255];
+  char ori[255];
   char de[255];
-  int costo;
+  int costo,d=0;
   DATOS *inicio, *auxiliar, *nodo;
   char separador[]=":";
   char *cadena;
-  const char *arregloCadena[max];
+  char *arregloCadena[max];
   int contador=0;
+char nulo='\0';
+char busca[25];
 
   system("clear");
   printf("\t\t\tRealizado por: Diana Laura Aviles Elizalde\n\n");
@@ -43,6 +47,7 @@ void topologia()
 	  //Guardar datos del renglo origen:Destino:Costo
 	  if(scanf(cadena,"%s%*c%s%*c%d",or,de,&costo)==3) //valida que tenga 3 valores
 	    {
+
 	      nodo=malloc(sizeof(DATOS));
 	      if(nodo==NULL)
 		{
@@ -63,14 +68,14 @@ void topologia()
 		}
 	      nodo->origen=(char*)malloc(strlen(or));
 	      strcpy(nodo->origen,or);
-	      printf("%s\n",nodo->origen);
 	      nodo->destino=(char*)malloc(strlen(de));
 	      strcpy(nodo->destino,de);
-	      printf("%s\n",nodo->destino);
 	      nodo->costo=costo;
-	      printf("%d\n",nodo->costo);
-
 	      nodo->siguiente=NULL;
+
+        printf("%s\n",nodo->origen);
+        printf("%s\n",nodo->destino);
+        printf("%d\n",nodo->costo);
 
 	      if (inicio == NULL)
 		{
@@ -80,59 +85,50 @@ void topologia()
 		{
 		  auxiliar->siguiente=nodo;
 		}
-	      auxiliar=nodo;
+auxiliar=nodo;
 	    }
+
 	}
       fclose(topologia);
       //apartir de aqui , comparamos los cadenas para determinar cuantos nodos son
-      //inicializamos el arreglo de cadenas.
-      for (a=0; a<max; a++)
-	{
-	  arregloCadena[a]="0";
-	  printf("%s\n",arregloCadena[a]);
-	}
+      //inicializamos el arreglo de cadenas
 
-      auxiliar = inicio;
-      while (auxiliar != NULL)
-        {
-          contador=0;
-          for (a=0; a<max; a++)
-          {
-              if(strstr(arregloCadena[a],"0")!=NULL)
-              {
-                if (strcasecmp(arregloCadena[a],auxiliar->origen)==0)
-                  {
-                    contador = 1;
-                  }
-              }
-          }
-          if(contador==0)
-          {
-            arregloCadena[a]=auxiliar->origen;
-          }
+      if (auxiliar == NULL)
+      {
+        printf("\nNo hay DATOS en el programa\n\n");
+     }
+      else
+       {
+   printf("\nsi hay\n\n");
+ }
 
-          contador=0;
-          for (a=0; a<max; a++)
-          {
-              if(strstr(arregloCadena[a],"0")!=NULL)
-              {
-                if (strcasecmp(arregloCadena[a],auxiliar->origen)==0)
-                  {
-                    contador = 1;
-                  }
-              }
-          }
-          if(contador==0)
-          {
-            arregloCadena[a]=auxiliar->destino;
-          }
-           auxiliar = auxiliar->siguiente;
-	      }
-  for(a=0;a<max;a++)
+
+//vamos a buscar en la lista
+
+printf("buscar: ");
+scanf("%s",busca);
+printf("%s",busca);
+
+auxiliar=inicio;
+while(auxiliar!=NULL)
   {
-    printf("%s",arregloCadena[a]);
+    if(strcmp(busca,auxiliar->origen)==0)
+    {
+    printf("%s\n",auxiliar->origen);
+    contador=1;
   }
-      getchar();
-      getchar();
-    }
+    auxiliar=auxiliar->siguiente;
+  }
+  if(contador==0)
+  {
+    printf(" no existe");
+  }
+
+//
+ }
+//
+    getchar();
+    getchar();
+    //
+
 }

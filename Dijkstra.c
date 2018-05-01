@@ -3,6 +3,7 @@
   ---------------------------------------------------------------------------------------------------*/
 #include "funcionesGenerales.h"
 
+
 int main(int argc, char const *argv[]) {
 
   char opcion[15];
@@ -49,6 +50,7 @@ int main(int argc, char const *argv[]) {
 
     case 2:
       topologia();
+
       break;
 
     case 3:
