@@ -4,11 +4,34 @@
 #include "funcionesGenerales.h"
 
 
-int main(int argc, char const *argv[]) {
+int main(int argc, char const *argv[])
+{
 
-  char opcion[15];
-  int opcionMenu=0;
-  int valida=0;
+FILE *propiedadesTxt; //leer el archivo de propiedades
+FILE *topologiaTxt; //lee el archivo de topologia
+
+int i=0,j=0;
+int nodoEntrada=0;
+int contadorNodosEntrada=0;
+int contadorNodosSalida=0;
+int contadorLongitud=0;
+int res;
+char nodoEntradaAscii;
+char nodoDestinoAscii;
+char archivoTopologia[]= "topologia.txt";
+char archivoPropiedades[]= "properties.txt";
+char letraComparar[20];
+char edificio[20];
+
+//variables para el menú
+char opcion[15];
+int opcionMenu=0;
+int valida=0;
+
+//declaracion de la estructura almacenando un espacio en la memoria
+struct arrChar aux;
+nodoEstructura *nodo = calloc(1, sizeof (nodoEstructura));
+
 
   do {
     do{
@@ -49,8 +72,25 @@ int main(int argc, char const *argv[]) {
       break;
 
     case 2:
-      topologia();
+    topologiaTxt=fopen(archivoTopologia,"r");
+    if(topologiaTxt==NULL)
+    {
+     printf("NO existe el archivo\n");
+   }
+   else
+   {
+     while (fscanf(topologiaTxt,"%s %s %s",aux.nodosEntrada,aux.nodoSalida,aux.longitud) != EOF)
+     {
+         j++;
+       int auxEntero= aux.longitud[0] - '0';
+       agregarArista(nodo,toascii(aux.nodosEntrada[0]), toascii(aux.nodoSalida[0]), auxEntero);
 
+     }
+   }
+     fclose (topologiaTxt);
+
+     getchar();
+     getchar();
       break;
 
     case 3:

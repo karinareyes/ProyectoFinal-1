@@ -1,0 +1,9 @@
+a  Puerta10
+b  ElCubo
+c  EdificioK
+d  EdificioC
+e  LabL
+f  LabFisica
+g  Puerta1
+h  Estacionamiento
+i terraza
