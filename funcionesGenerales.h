@@ -14,7 +14,7 @@ typedef struct topologiatxt{
   struct topologiatxt *siguiente;
 }DATOS;
 
-//Estructutras finales TDA
+//Estructutras finales para el proyecto final
 struct arrChar{
 char leerCaracter[256];
 char auxEntrada[256];
