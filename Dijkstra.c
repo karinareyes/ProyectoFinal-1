@@ -94,14 +94,10 @@ nodoEstructura *nodo = calloc(1, sizeof (nodoEstructura));
       break;
 
     case 3:
-      ruteo();
+      
       break;
 
     case 4:
-      direccionamiento();
-      break;
-
-    case 5:
       printf("HASTA LUEGO VUELVA PRONTO\n");
       exit(0);
       break;

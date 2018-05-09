@@ -63,13 +63,16 @@ int validationError(int valida);
 extern void agregarArista (nodoEstructura *nodo, int nodoOrigen, int nodoDestino, int costoArista);
 extern void agregaVertice (nodoEstructura *nodo, int i);
 
-/*funciones ruteo*/
-void ruteo();
+/*funciones  ruteo*/
+extern pilaNodoE *creaPila (int nodoss);
+extern void guardaPilaNodos (pilaNodoE *auxPilaNodos, int v, int p);
+extern int propPila (pilaNodoE *auxPilaNodoE);
 
-/*funciones  direccionamiento*/
-void direccionamiento();
 
 
+extern void dijkstra (nodoEstructura *nodo, int nodoOrigen, int nodoDestino);
+extern void muestraRuta (nodoEstructura *nodo, int i);
+extern int sacaMenor (pilaNodoE *h, int longNodo2, int z, int y);
 
 /*Estructura para leer el archivo de topologia.txt
 typedef struct topologiatxt{
