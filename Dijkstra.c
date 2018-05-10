@@ -27,7 +27,7 @@ char edificio[20];
 char opcion[15];
 int opcionMenu=0;
 int valida=0;
-
+int contadori=0;
 //declaracion de la estructura almacenando un espacio en la memoria
 struct arrChar aux;
 nodoEstructura *nodo = calloc(1, sizeof (nodoEstructura));
@@ -47,9 +47,8 @@ nodoEstructura *nodo = calloc(1, sizeof (nodoEstructura));
       printf("\t\t |                                                                             |\n");
       printf("\t\t |  1.  Ayuda                                                                  |\n");
       printf("\t\t |  2.  Generar topología                                                      |\n");
-      printf("\t\t |  3.  Crear las tablas de ruteo                                              |\n");
-      printf("\t\t |  4.  Mostrar la lista de nodos de la red                                    |\n");
-      printf("\t\t |  5.  Salir                                                                  |\n");
+      printf("\t\t |  3.  Mostrar la lista de nodos de la red                                    |\n");
+      printf("\t\t |  4.  Salir                                                                  |\n");
       printf("\t\t |                                                                             |\n");
       printf("\t\t\t\t  --------------------------------------------\n\n");
       printf("\t\t\t\tIngresar opcion: ");
@@ -89,12 +88,46 @@ nodoEstructura *nodo = calloc(1, sizeof (nodoEstructura));
    }
      fclose (topologiaTxt);
 
+    propiedadesTxt=fopen(archivoPropiedades,"r");
+     printf("\n\n\t\tReferencia\n\n");
+     while (fscanf(topologiaTxt,"%s\t%s \n",letraComparar,edificio) != EOF){
+       j++;
+       for(int contadori = 0; letraComparar[contadori]; contadori++) {
+         printf("\t\t%c\t%s\n", letraComparar[contadori],edificio);
+       }
+
+     }
+     fclose (propiedadesTxt);
+
      getchar();
      getchar();
       break;
 
     case 3:
-      
+    system("clear");
+    printf("Escribe el nodo origen:");
+scanf("%c",&nodoEntradaAscii);
+int enteroNodoEntradaAscii=  (int)nodoEntradaAscii;
+if(enteroNodoEntradaAscii>122 || enteroNodoEntradaAscii<97){
+  printf("\n\n\t\t\t\n ERROR escribe una letra en minuscula de la a a la z \n");
+  exit(0);
+}
+printf("\n");
+getchar();
+printf("Escribe el nodo destino:");
+scanf("%c",&nodoDestinoAscii);
+int enteroNodoDestinoAscii=  (int)nodoDestinoAscii;
+if(enteroNodoDestinoAscii>122 || enteroNodoDestinoAscii<97){
+  printf("\n\n\t\t\t\n ERROR escribe una letra en minuscula de la a a la z \n");
+  exit(0);
+}
+//printf("\n\n\n\n\n\n Nodo salida %d",enteroNodoEntradaAscii);
+printf("\n\t\t\t *********Tabla de Ruteo ************\n\n\n");
+printf("\t Nodo Origen \t Nodo Destino \t Distancia\n");
+printf("\n\t\t %c \t\t %c \t\t %d \n",nodoEntradaAscii,nodoEntradaAscii,0);
+dijkstra(nodo, enteroNodoEntradaAscii,enteroNodoDestinoAscii);
+funcionDireccionamiento(nodo, enteroNodoDestinoAscii);
+
       break;
 
     case 4:

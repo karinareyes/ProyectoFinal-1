@@ -9,8 +9,15 @@ pilaNodoE *creaPila (int nodoss) {
     auxiliarPila->indice = calloc(nodoss, sizeof (int));
     return auxiliarPila;
 }
-
-
+int sacaMenor (pilaNodoE *h, int longNodo2, int z, int y) {
+    int m = longNodo2;
+    if (z <= h->longitudNodo && h->auxNodo[z] < h->auxNodo[m])
+        m = z;
+    if (y <= h->longitudNodo && h->auxNodo[y] < h->auxNodo[m])
+        m = y;
+    return m;
+}
+ 
 
 void guardaPilaNodos (pilaNodoE *auxPilaNodos, int v, int p) {
     int pos = auxPilaNodos->indice[v] == 0 ? ++auxPilaNodos->longitudNodo : auxPilaNodos->indice[v];
@@ -57,7 +64,7 @@ void dijkstra (nodoEstructura *nodo, int nodoOrigen, int nodoDestino) {
     archivoRuteo=fopen("ruteo.txt","wt");
     fprintf(archivoRuteo,"\t\t\t\t%s%s%s%s%s\n","Tabla"," ","de"," ","ruteo");
     fprintf(archivoRuteo,"%s%s%s%s%s\n","NodoOrigen"," ","NodoDestino"," ","Distancia");
-    char concatenaArchivoRuteo="";
+    char concatenaArchivoRuteo;;
     nodoOrigen = nodoOrigen - 'a';
     nodoDestino = nodoDestino - 'a';
     for (i = 0; i < nodo->longitudVertices; i++) {
